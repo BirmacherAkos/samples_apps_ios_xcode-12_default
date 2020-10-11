@@ -15,3 +15,9 @@ struct samples_apps_ios_xcode_12_defaultApp: App {
         }
     }
 }
+
+struct samples_apps_ios_xcode_12_defaultApp_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
