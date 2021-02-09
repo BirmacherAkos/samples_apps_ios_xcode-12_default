@@ -30,6 +30,30 @@ class samples_apps_ios_xcode_12_defaultUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    
+    func testPussingLoginButton() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+
+        let loginButton = XCUIApplication().buttons["Login"]
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+        loginButton.tap()
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {

@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var count = 0
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
         Button(action: {
             print("Login tapped!")
+            count += 1
         }) {
             HStack {
                 Text("Login")
+                + Text(" \(count)")
                     .fontWeight(.semibold)
                     .font(.title)
             }
