@@ -11,7 +11,7 @@ struct ContentView: View {
     @State var count = 0
     
     var body: some View {
-        Text("Hello, world!")
+        Text("Hey, world!")
             .padding()
         Button(action: {
             print("Login tapped!")
