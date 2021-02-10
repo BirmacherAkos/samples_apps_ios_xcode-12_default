@@ -37,7 +37,7 @@ class samples_apps_ios_xcode_12_defaultUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let loginButton = XCUIApplication().buttons["Login"]
+        let loginButton = XCUIApplication().buttons["Login 0"]
         loginButton.tap()
         loginButton.tap()
         loginButton.tap()
