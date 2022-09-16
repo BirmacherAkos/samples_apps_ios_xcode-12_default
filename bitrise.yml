@@ -1,0 +1,188 @@
+---
+format_version: '11'
+default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
+project_type: ios
+app:
+  envs:
+  - BITRISE_PROJECT_PATH: BullsEye.xcworkspace
+  - BITRISE_SCHEME: BullsEye
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.2.x
+    machine_type_id: g2.8core
+pipelines:
+  demo:
+    stages:
+    - demo_build_tests: {}
+    - demo_run_tests_on_simulators: {}
+    - demo_always_run: {}
+stages:
+  demo_build_tests:
+    workflows:
+    - demo_build_tests: {}
+  demo_run_tests_on_simulators:
+    workflows:
+    - demo_run_tests_iPhone: {}
+    - demo_run_tests_iPad: {}
+    - demo_run_tests_iPod_fail: {}
+  demo_deploy:
+    workflows:
+    - demo_deploy_wf: {}
+  demo_always_run:
+    should_always_run: true
+    workflows:
+    - demo_always_run_wf: {}
+workflows:
+  demo_always_run_wf:
+    steps:
+    - script@1:
+        inputs:
+        - content: >-
+            #!/usr/bin/env bash
+
+            # fail if any commands fails
+
+            set -e
+
+            # make pipelines' return status equal the last command to exit with
+            a non-zero status, or zero if all commands exit successfully
+
+            set -o pipefail
+
+            # debug log
+
+            set -x
+
+
+            sleep 5
+  demo_build_tests:
+    steps:
+    - script@1:
+        inputs:
+        - content: >+
+            #!/usr/bin/env bash
+
+            # fail if any commands fails
+
+            set -e
+
+            # make pipelines' return status equal the last command to exit with
+            a non-zero status, or zero if all commands exit successfully
+
+            set -o pipefail
+
+            # debug log
+
+            set -x
+
+
+            printenv
+
+
+            echo "sleeping for 30"
+
+            sleep 30
+
+  demo_deploy_wf:
+    steps:
+    - script@1:
+        inputs:
+        - content: >-
+            #!/usr/bin/env bash
+
+            # fail if any commands fails
+
+            set -e
+
+            # make pipelines' return status equal the last command to exit with
+            a non-zero status, or zero if all commands exit successfully
+
+            set -o pipefail
+
+            # debug log
+
+            set -x
+
+
+            sleep 5
+  demo_run_tests_iPad:
+    steps:
+    - script@1:
+        inputs:
+        - content: >-
+            #!/usr/bin/env bash
+
+            # fail if any commands fails
+
+            set -e
+
+            # make pipelines' return status equal the last command to exit with
+            a non-zero status, or zero if all commands exit successfully
+
+            set -o pipefail
+
+            # debug log
+
+            set -x
+
+
+            sleep 15
+  demo_run_tests_iPhone:
+    steps:
+    - script@1:
+        inputs:
+        - content: >-
+            #!/usr/bin/env bash
+
+            # fail if any commands fails
+
+            set -e
+
+            # make pipelines' return status equal the last command to exit with
+            a non-zero status, or zero if all commands exit successfully
+
+            set -o pipefail
+
+            # debug log
+
+            set -x
+
+
+            printenv
+
+
+            sleep 15
+  demo_run_tests_iPod_fail:
+    steps:
+    - script@1:
+        inputs:
+        - content: >-
+            #!/usr/bin/env bash
+
+            # fail if any commands fails
+
+            set -e
+
+            # make pipelines' return status equal the last command to exit with
+            a non-zero status, or zero if all commands exit successfully
+
+            set -o pipefail
+
+            # debug log
+
+            set -x
+
+
+            exit 1
+  env_var_test:
+    steps:
+    - set-env-var@0:
+        inputs:
+        - destination_keys: ENV_NAME
+        - value: aaaa
+  worfklow_with_bitrise_run_1:
+    steps:
+    - bitrise-run@0: {}
+  workflow_with_bitrise-run_2:
+    steps:
+    - bitrise-run@0: {}
